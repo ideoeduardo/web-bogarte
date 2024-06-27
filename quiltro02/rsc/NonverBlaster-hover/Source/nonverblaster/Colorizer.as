@@ -1,0 +1,1 @@
+﻿package nonverblaster {	import flash.display.*;	import flash.geom.ColorTransform;		public class Colorizer extends MovieClip{				public function Colorizer(){					}		public static function colorize($target, $color){			var myColor:ColorTransform = new ColorTransform();			myColor.color = $color;			$target.transform.colorTransform = myColor;		}	}}

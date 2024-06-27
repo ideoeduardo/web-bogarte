@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" version="-//W3C//DTD XHTML 1.1//EN" xml:lang="en">
+
+<head>
+
+<title>mooTree 2</title>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="mootree.css" type="text/css" media="screen" />
+
+<script type="text/javascript" src="mootools/mootools-1.2-core.js"></script>
+<script type="text/javascript" src="mootree.js"></script>
+
+<script type="text/javascript">
+
+var tree;
+
+window.onload = function() {
+	
+	// --- ordinary MooTreeControl example:
+	
+	tree = new MooTreeControl({
+		div: 'mytree',
+		mode: 'files',
+		grid: true,
+		onExpand: function(node, state) {
+			$('events').innerHTML += "<b>Tree Event:</b> " + node.text + " " + (state ? 'expanded' : 'collapsed') + "<br />";
+		},
+		onSelect: function(node, state) {
+			$('events').innerHTML += "<b>Tree Event:</b> " + node.text + " " + (state ? 'selected' : 'deselected') + "<br />";
+		},
+		onClick: function(node) {
+			$('events').innerHTML += "<b>Tree Event:</b> " + node.text + " clicked<br />";
+		}
+	},{
+		text: 'Root Node',
+		open: true
+	});
+
+	var node1 = tree.insert({
+		text:'Subnode 1: click me!',
+		onClick: function() {
+			$('events').innerHTML += "<b>Node Event:</b> Subnode 1 clicked<br />";
+		}
+	});
+	var node2 = tree.insert({
+		text:'Subnode 2: Expand me!',
+		onExpand: function(state) {
+			$('events').innerHTML += "<b>Node Event:</b> Subnode 2 " + (state ? 'expanded' : 'collapsed') + "<br />";
+		}
+	});
+	var node3 = tree.insert({text:'Subnode 3'});
+	
+	var node2_1 = node2.insert({
+		text:'Subnode 2.1: Select me!',
+		onSelect: function(state) {
+			$('events').innerHTML += "<b>Node Event:</b> Subnode 2.1 " + (state ? 'selected' : 'deselected') + "<br />";
+		}
+	});
+	var node2_2 = node2.insert({text:'Subnode 2.2'});
+	var node2_3 = node2.insert({text:'Subnode 2.3'});
+	
+	var node2_2_1 = node2_2.insert({text:'Subnode 2.2.1'});
+	var node2_2_1_1 = node2_2_1.insert({text:'Subnode 2.2.1.1'});
+	
+	var node4 = tree.insert({text:'Subnode 4'});
+	
+}
+
+</script>
+
+</head>
+
+<body>
+
+<h2>mooTree 2</h2>
+<h4>example 1: tree and node event example</h4>
+
+<p>
+	This example demonstrates tree- and node-level events.
+</p>
+
+<div id="mytree">
+</div>
+
+<p>
+	<input type="button" value=" expand all " onclick="tree.expand()" />
+	<input type="button" value=" collapse all " onclick="tree.collapse()" />
+</p>
+
+<p id="events">
+	<i>Recorded events will be displayed below:</i><br />
+</p>
+
+</body>
+
+</html>

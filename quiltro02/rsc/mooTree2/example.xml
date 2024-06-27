@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<nodes>
+	<node text="Loaded Closed item">
+		<node text="Subitem 1" />
+		<node text="Subitem 2" />
+		<node text="Subitem 3" />
+	</node>
+	<node text="Loaded Open Item" open="true">
+		<node text="Loaded Red Item" color="#ff0000" />
+		<node text="Loaded Smiley Item" icon="sample_icons.gif#3" />
+		<node text="Loaded Item with Alert" alert="You selected me!" />
+	</node>
+	<node text="Loaded Simple Item" />
+	<node text="Loaded Autoloading Item" load="example.xml" />
+</nodes>

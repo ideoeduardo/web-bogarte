@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" version="-//W3C//DTD XHTML 1.1//EN" xml:lang="en">
+
+<head>
+
+<title>mooTree 2</title>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="mootree.css" type="text/css" media="screen" />
+
+<script type="text/javascript" src="mootools/mootools-1.2-core.js"></script>
+<script type="text/javascript" src="mootree.js"></script>
+
+<script type="text/javascript">
+
+var tree;
+
+window.onload = function() {
+	
+	// --- ordinary MooTreeControl example:
+	
+	tree = new MooTreeControl({
+		div: 'mytree',
+		mode: 'files',
+		grid: true
+	},{
+		text: 'Root Node',
+		open: true
+	});
+	
+	tree.disable(); // this stops visual updates while we're building the tree...
+	
+	var node1 = tree.insert({text:'Subnode 1', id:'1'});
+	var node2 = tree.insert({text:'Subnode 2', id:'2', icon:'sample_icons.gif#1', openicon:'sample_icons.gif#2'});
+	var node3 = tree.insert({text:'Subnode 3', id:'3'});
+	
+	var node2_1 = node2.insert({text:'Subnode 2.1', id:'2.1'});
+	var node2_2 = node2.insert({text:'Subnode 2.2', id:'2.2', color:'#ff0000'});
+	var node2_3 = node2.insert({text:'Subnode 2.3', id:'2.3'});
+	
+	var node2_2_1 = node2_2.insert({text:'Subnode 2.2.1', id:'2.2.1', color:'#00a000'});
+	var node2_2_1_1 = node2_2_1.insert({text:'Subnode 2.2.1.1', id:'2.2.1.1', color:'#0000ff'});
+	
+	var node4 = tree.insert({text:'Subnode 4', id:'4', icon:'sample_icons.gif#3'});
+	
+	tree.expand();
+	
+	tree.enable(); // this turns visual updates on again.
+	
+}
+
+function find_node() {
+	var node = tree.get( $('nodeid_input').value );
+	window.alert( node ? 'found: ' + node.text : 'not found...' );
+}
+
+</script>
+
+</head>
+
+<body>
+
+<h2>mooTree 2</h2>
+<h4>example 1: basic tree example</h4>
+
+<p>
+	This demonstrates most of the basic features of MooTree, including enable() and disable() which can be used
+	to minimize the number of visual updates performed.
+</p>
+
+<p>
+	This example also demonstrates basic usage of the get() method and node id's - for example, type "2.2" in the
+	text input at the bottom of this page, and press "find node".
+</p>
+
+<div id="mytree">
+</div>
+
+<p>
+	<input type="button" value=" expand all " onclick="tree.expand()" />
+	<input type="button" value=" collapse all " onclick="tree.collapse()" />
+	<input type="text" value="" id="nodeid_input" value="2.2" /><input type="submit" value="Find node" onclick="find_node()" />
+</p>
+
+</body>
+
+</html>

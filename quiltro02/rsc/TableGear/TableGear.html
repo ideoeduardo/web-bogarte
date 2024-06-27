@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+	<title>TableGear Example 1: Basic Row Sorting</title> 
+	<link type="text/css" rel="stylesheet" href="css/demo.css" /> 
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+</head> 
+<body> 
+<div class="description"> 
+	<h1>Example 1: Basic Row Sorting</h1> 
+	<p>Click on the table headers to sort the rows.</p> 
+</div> 
+<div class="box"> 
+	<table id="items"> 
+		<thead> 
+			<tr> 
+				<th class="sortable">Item Name</th> 
+				<th class="sortable numeric">Price</th> 
+				<th class="sortable date">Sell Date</th> 
+			</tr> 
+		</thead> 
+		<tbody> 
+			<tr> 
+				<td>Box</td> 
+				<td>$3.00</td> 
+				<td>August 12, 2008</td> 
+			</tr> 
+			<tr> 
+				<td>Stereo</td> 
+				<td>$125.63</td> 
+				<td>May 3, 2005</td> 
+			</tr> 
+			<tr> 
+				<td>iPod</td> 
+				<td>$287</td> 
+				<td>October 3, 2006</td> 
+			</tr> 
+			<tr> 
+				<td>Picture Frame</td> 
+				<td>$15.42</td> 
+				<td>June 30, 2003</td> 
+			</tr> 
+		</tbody> 
+	</table> 
+</div> 
+<script type="text/javascript" src="js/moot-core.js"></script> 
+<script type="text/javascript" src="js/TableGear.js"></script> 
+<script type="text/javascript"> 
+ 
+new TableGear("items");
+ 
+</script> 
+</body> 
+</html>

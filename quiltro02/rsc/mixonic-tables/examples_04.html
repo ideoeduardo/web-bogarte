@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>An example of a minimal, extensible table sort</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <script type="text/javascript" src="js/mootools-1.2-core-nc.js"></script>
+  <script type="text/javascript" src="js/mootools-1.2-more.js"></script>
+
+  <script type="text/javascript" src="js/sorting_table.js"></script>
+  <script type="text/javascript" src="js/paginating_table.js"></script>
+<style type="text/css">
+body{
+  font-size   :76%;
+  font-family :Verdana, Helvetica; }
+  
+  
+table {
+  font-size   :1.0em;
+  text-align: left; }
+table thead tr th {
+  padding     :2px 4px;
+  background  :#d7d7d7;
+  border-bottom:1px solid black; }
+table tbody tr td {
+  padding     :2px 4px; }
+table tbody tr.alt {
+  background  :#e8f3e8; }
+table tbody tr.collapsed td {
+  padding     :0px; }
+table tbody tr.collapsed td div {
+  font-family :Serif;
+  font-size   :1.0em;
+  margin-left :10px; }
+table#example_2_table tbody tr.collapsed td div {
+  white-space :pre; }
+table#example_4_table tbody tr.collapsed td div {
+  width       :600px; }
+.forward_sort {
+  background  :#77bb77; }
+.reverse_sort {
+  background  :#bb7777; }
+ul.pagination {
+  margin      :0;
+  padding     :0;
+  list-style  :none; }
+ul.pagination li {
+  margin      :0;
+  padding     :0 0 2px 0;
+  float       :left;
+  list-style  :none; }
+ul.pagination li a {
+  padding     :1px 3px 3px 3px;
+  display     :block; }
+ul.pagination li a.currentPage {
+  background  :#e4ebff; }
+</style>
+
+
+
+</head><body>
+
+<div id="header">
+  This is an example of a javascript sort based on <a href="http://www.mootools.net/">mootools</a>.  There is a <a href="http://madhatted.com/2008/6/20/the-joy-of-tables-on-cows">blog posting</a> the goes with this page.
+</div>
+<div id="example_4">
+  <h2>A sorting paginated table with collapsed rows</h2>
+
+<ul class="pagination" id="example_4_pagination"></ul>
+<div style="clear:both;"></div>
+
+<table id="example_4_table" cellpadding="0" cellspacing="0">
+  <thead>
+  <tr>
+    <th width="215">Name</th>
+    <th width="397">Party</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><a href="#" id="mccain">McCain</a></td>
+    <td>GOP</td>
+  </tr>
+  <tr class="collapsed">
+    <td colspan="2">
+      <div id="mccain_details">
+        And, if we lost, then who win? Did Al Qaida win? When on the floor of the House of Representatives they cheer - they cheer - when they pass a withdrawal motion that is a certain date for surrender, what were they cheering? Surrender? Defeat?
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="#" id="obama">Obama</a></td>
+    <td>Dem</td>
+  </tr>
+  <tr class="collapsed">
+    <td colspan="2">
+      <div id="obama_details">
+A good compromise, a good piece of legislation, is like a good sentence; or a good piece of music. Everybody can recognize it. They say, 'Huh. It works. It makes sense.' 
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="#" id="hillary">Clinton</a></td>
+    <td>Dem</td>
+  </tr>
+  <tr class="collapsed">
+    <td colspan="2">
+      <div id="hillary_details">
+Let's not leave an educational vacuum to be filled by religious extremists who go to families who have no other option and offer meals, housing and some form of education. If we are going to combat extremism then we must educate those very same children.
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="#" id="gravel">Gravel</a></td>
+    <td>Dem</td>
+  </tr>
+  <tr class="collapsed">
+    <td colspan="2">
+      <div id="gravel_details">
+The entire deaths of Vietnam died in vain. And they're dying in vain right this very second. And you know what's worse than a soldier dying in vain? It's more soldiers dying in vain. That's what's worse.
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="#" id="huck">Huckabee</a></td>
+    <td>GOP</td>
+  </tr>
+  <tr class="collapsed">
+    <td colspan="2">
+      <div id="huck_details">
+How could I get up there and say, 'People, we've got to do better,' when I was the poster child for everything that was wrong? I've always believed leaders don't ask others to do what they're unwilling to do. 
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="#" id="barr">Barr</a></td>
+    <td>Green</td>
+  </tr>
+  <tr class="collapsed">
+    <td colspan="2">
+      <div id="barr_details">
+They have this sort of idea in their minds, bless their hearts, that nobody should do anything to upset the Republican nominee. This notion that the political world swirls around two galaxies only, Republican and Democrat only, and anybody else who enters that fray is going to affect the other two and that's bad --- that's a very myopic notion.
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<script type="text/javascript">
+// This fancy expando table needs a few more things from mootools: Fx.Style,
+// Fx.Slide, Hash, Element.Events
+//
+window.addEvent( 'domready', function(){
+    
+  window.effects = new Hash;
+  $each([ 'mccain', 'obama', 'hillary', 'gravel', 'huck', 'barr' ], function( id ){
+    var el = $(id);
+    el.store( 'effect', new Fx.Slide( id+'_details' ).hide() );
+    el.addEvent( 'mousedown', function(evt){
+      evt.stopPropagation();
+      this.retrieve( 'effect' ).toggle();
+      return false;
+    });
+  });
+
+  new SortingTable( 'example_4_table', {
+    details: true,
+    paginator: new PaginatingTable(
+                    'example_4_table',
+                    'example_4_pagination', {
+                      details: true,
+                      per_page: 3 }
+    )
+  });
+});
+</script>
+</div>
+</body></html>

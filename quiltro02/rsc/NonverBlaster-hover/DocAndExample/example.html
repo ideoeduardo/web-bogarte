@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>NonverBlaster</title>
+	<script type="text/javascript" charset="utf-8" src="swfobject.js"></script>
+	<style type="text/css" media="screen">
+		body {
+			background-color: #ffffff;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Example Page</h1>
+	<h2>Very nice looking flowers moved by the the wind</h2>
+	<div id="videoPlayer">
+		To watch this video, you need the latest <a href="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" target="_blank">Flash-Player</a> and active javascript in your browser.
+	</div>
+	<script type="text/javascript">
+		var player = new SWFObject("NonverBlaster.swf", "video", "550", "309", "9", "#000000"); //size
+		player.addParam("scale", "noscale");
+		player.addParam("allowFullScreen", "true");
+		player.addParam("wmode", "transparent");
+		//
+		// variables
+		player.addVariable("videoURL", "../nice-flowers.mov");
+		player.addVariable("teaserURL", "../nice-flowers.jpg");
+		player.addVariable("allowSmoothing", "true");
+		player.addVariable("autoPlay", "false");
+		player.addVariable("buffer", "6");
+		player.addVariable("showTimecode", "true");
+		player.addVariable("loop", "false");
+		player.addVariable("controlColour", "0xff8ec6");
+		player.addVariable("scaleIfFullScreen", "true");
+		player.addVariable("showScalingButton", "true");
+		player.addVariable("defaultVolume", "100");
+		//
+		player.write("videoPlayer");
+	</script>
+	<p>
+		This video really needs to be changed (especially the colours of the controls)!<br />
+		See the souce-code of this site if you want to know how the movie was embedded.
+	</p>
+</body>
+</html>
