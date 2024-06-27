@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>An example of a minimal, extensible table sort</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <script type="text/javascript" src="js/mootools-1.2-core-nc.js"></script>
+  <script type="text/javascript" src="js/mootools-1.2-more.js"></script>
+
+  <script type="text/javascript" src="js/sorting_table.js"></script>
+  <script type="text/javascript" src="js/paginating_table.js"></script>
+<style type="text/css">
+body{
+  font-size   :76%;
+  font-family :Verdana, Helvetica; 
+  background:#fff url(images/bg.gif) repeat-x; color:#091f30}
+  
+  
+		  table {
+			font-size   :1.0em;
+			text-align: left;
+			background-color: #FFF;
+			margin:0 auto 15px;
+			width:800px;
+			border-left:1px solid #c6d5e1; border-top:1px solid #c6d5e1; border-bottom:none;
+			}
+		  table thead tr th {
+			padding     :4px 4px;
+			border-bottom:1px solid black;
+			border-right:none;
+			border:1px solid #fff;
+			color:#cfdce7;
+			border:1px solid #fff;
+			background:url(images/header-bg.gif);
+			}
+					
+		  table tbody tr td {
+			padding     :4px 6px 6px;
+			border-bottom:1px solid #c6d5e1; 
+			border-right:1px solid #c6d5e1;
+			}
+		  table tbody tr.alt {
+			background  :#ecf2f6;
+			}
+		  table tbody tr.collapsed td {
+			padding     :0px;
+			}
+		  table tbody tr.collapsed td div {
+			font-family :Serif;
+			font-size   :1.0em;
+			margin-left :10px;}
+			
+			
+		  table#example_2_table tbody tr.collapsed td div {white-space :pre; }
+		  table#example_4_table tbody tr.collapsed td div {width       :600px; }
+		  
+		  .forward_sort {background-color: #77bb77;background-image: url(images/header-selected-bg.gif);}
+		  .reverse_sort {background-color: #77bb77;background-image: url(images/header-selected-bg.gif);}
+			
+			
+			
+			
+		  #controls {width:800px; margin:0 auto; height:20px}
+		  
+		  ul.pagination {
+			margin      :0;
+			padding     :0;
+			list-style  :none; 
+			}
+		  ul.pagination li {
+			margin      :0;
+			padding     :0 0 2px 0;
+			float       :left;
+			list-style  :none; 
+			}
+		  ul.pagination li a {
+			padding     :1px 3px 3px 3px;
+			display     :block;
+			text-decoration: none;
+			}
+		  ul.pagination li a.currentPage {
+			background  :#e4ebff; }
+</style>
+
+
+
+</head><body>
+<div id="example_3">
+  <h2>Año 2009</h2>
+
+
+
+  <table id="example_3_table" cellpadding="0" cellspacing="0">
+    <thead>
+              <tr>
+                <th width="27">Int</th>
+                <th width="120">Short String</th>
+                <th width="288">Long String</th>
+              </tr>
+    </thead>
+    <tbody>
+              <tr class="alt">
+                <td>0</td>
+                <td>mt0z03ui</td>
+                <td>t3nt0d6iu6cbp5k73cwkz5uz</td>
+              </tr>
+              <tr class="">
+                <td>1</td>
+                <td>sjfa5unp</td>
+                <td>c3eekde4pnui8donj2aiywx0</td>
+              </tr>
+              <tr class="alt">
+                <td>2</td>
+                <td>cb8q35wn</td>
+                <td>wyh6v62i3oyik455ckpsofxy</td>
+              </tr>
+              <tr class="">
+                <td>3</td>
+                <td>yinutfwg</td>
+                <td>k8xbne0dvrcbwag7x0suh7fd</td>
+              </tr>
+              <tr class="alt">
+                <td>4</td>
+                <td>ihrn56mv</td>
+                <td>5znsiqfaxmbmcq48ukf8ziyr</td>
+              </tr>
+              <tr class="">
+                <td>5</td>
+                <td>6hvfew87</td>
+                <td>p64uaze6mpjequgah3icw8h4</td>
+              </tr>
+              <tr class="alt">
+                <td>6</td>
+                <td>rxksoonk</td>
+                <td>fwaiw05t556hzuhdtf5z6czc</td>
+              </tr>
+              <tr class="">
+                <td>7</td>
+                <td>f63wevne</td>
+                <td>z6qooc5ou8g7czsdcva330hp</td>
+              </tr>
+              <tr class="alt">
+                <td>8</td>
+                <td>3pt8khzn</td>
+                <td>n6tfz2t38bn7pu8x4dobskhn</td>
+              </tr>
+              <tr class="">
+                <td>9</td>
+                <td>p5oos7fv</td>
+                <td>axy4o6juqo8d0tbyco80zpzu</td>
+              </tr>
+              <tr class="alt">
+                <td>10</td>
+                <td>85tg4y3c</td>
+                <td>tu2vxz763odeeksj57n8r73q</td>
+              </tr>
+              <tr class="">
+                <td>11</td>
+                <td>v4u8fsro</td>
+                <td>f5hzr78zwto4qq3irqpbmwm3</td>
+              </tr>
+              <tr class="alt">
+                <td>12</td>
+                <td>gcbd6zri</td>
+                <td>24ksz0wf6tu53jn4k74jbgm0</td>
+              </tr>
+              <tr class="">
+                <td>13</td>
+                <td>zcf5grex</td>
+                <td>n4okbrkrmry7ib4kdqiuzynv</td>
+              </tr>
+              <tr class="alt">
+                <td>14</td>
+                <td>pu7iqhq7</td>
+                <td>ckixjiw3r3entw76r4bq3uko</td>
+              </tr>
+              <tr class="">
+                <td>15</td>
+                <td>bscb08hm</td>
+                <td>vimrv8jh32jn5pppjnqwrcnk</td>
+              </tr>
+              <tr class="alt">
+                <td>16</td>
+                <td>xjhznd4c</td>
+                <td>j8rgida6ki5sfprssxeo2i4u</td>
+              </tr>
+              <tr class="">
+                <td>17</td>
+                <td>k0bfvzim</td>
+                <td>72w57f2w2vqwqoru2bxbdmk4</td>
+              </tr>
+              <tr class="alt">
+                <td>18</td>
+                <td>7argm8jf</td>
+                <td>sy0xhaoagwxz4gcduvbn03mz</td>
+              </tr>
+              <tr class="">
+                <td>19</td>
+                <td>th5kehmb</td>
+                <td>e8g08gr4707ogkndhafovu6d</td>
+              </tr>
+              <tr class="alt">
+                <td>20</td>
+                <td>eg8dpa8m</td>
+                <td>07ktibeik0cpue2v6sswke68</td>
+              </tr>
+              <tr class="">
+                <td>21</td>
+                <td>0qrhgh8h</td>
+                <td>khzwbgedd4mg6mdxt8xxh2pi</td>
+              </tr>
+              <tr class="alt">
+                <td>22</td>
+                <td>n6htm5ns</td>
+                <td>a75kxm50tk7mikf02kjpq84u</td>
+              </tr>
+              <tr class="">
+                <td>23</td>
+                <td>boc7utz0</td>
+                <td>vxbbopvucxvpskf4dx4cyao3</td>
+              </tr>
+              <tr class="alt">
+                <td>24</td>
+                <td>xffxiwps</td>
+                <td>je4nsd84gab524mprcz835nv</td>
+              </tr>
+              <tr class="">
+                <td>25</td>
+                <td>muacrm30</td>
+                <td>5vv22ynekhqmeqr76rv355op</td>
+              </tr>
+    </tbody>
+  </table>
+  
+    <div id="controls">
+          <ul class="pagination" id="example_3_table_paginator"></ul>
+          <div style="clear:both;"></div>
+    </div> 
+  
+  
+  
+<script type="text/javascript">
+window.addEvent( 'domready', function(){
+  new SortingTable( 'example_3_table', {
+    paginator: new PaginatingTable(
+                    'example_3_table',
+                    'example_3_table_paginator', {
+                      per_page: 10 }
+    )
+  });
+});
+</script>
+</div>
+
+</body></html>

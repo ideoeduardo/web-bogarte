@@ -1,0 +1,30 @@
+/* ie.css */
+body {text-align:center;}
+.container {text-align:left;}
+* html .column {overflow-x:hidden;}
+* html legend {margin:-18px -8px 16px 0;padding:0;}
+ol {margin-left:2em;}
+sup {vertical-align:text-top;}
+sub {vertical-align:text-bottom;}
+html>body p code {*white-space: normal;}
+hr {margin:-8px auto 11px;}
+.container ul { list-style: disc outside; margin-left: 2em; } /* IE can't handle :before and :after */
+.container ul li { text-indent: 0; margin-left: 0; }
+.container legend { margin-bottom: 1.6em; } /* IE form margin bug */
+sup, sub { font-size: 100%; } /* IE superscript & subscript bug */
+.container blockquote p, #content blockquote ul, #content blockquote ol, #content blockquote dl, #content blockquote pre, #content blockquote address, 
+.container blockquote table, #content blockquote form, #content blockquote h1, #content blockquote h2, #content blockquote h3, #content blockquote h4, #content blockquote h5, #content blockquote h6 { margin-top: .8em; margin-bottom: .8em; } /* IE can't handle :first-child */
+* html .container textarea, * html .container input { padding: 0; } /* IE < 7 form fix */
+.container input[type='submit'], .container input[type='button'] { padding: 0; } /* IE 7 button fix */
+.container legend+* { margin-top: 0; } /* we already added legend margin */
+a abbr, a acronym { text-decoration: underline; } /* IE 7 bug */
+
+
+/* divit ie.css */
+.d100 { width: 100% }		.d50 { width: 49.99% }
+.d90  { width: 89.99% }		.d10 { width: 9.99% }
+.d80  { width: 79.99% }		.d20 { width: 19.99% }
+.d75  { width: 74.99% }		.d25 { width: 24.99% }
+.d70  { width: 69.99% }		.d30 { width: 29.99% }
+.d66  { width: 66.665% }	.d33 { width: 33.332% }
+.d60  { width: 59.99% }		.d40 { width: 39.909% }

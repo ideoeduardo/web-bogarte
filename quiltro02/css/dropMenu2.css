@@ -1,0 +1,135 @@
+/* Root = Horizontal, Secondary = Vertical */
+
+#dropMenu{
+	width: 940px;
+	height: 24px;
+	float: left;
+	padding:0 0 0 10px;
+}
+#dropMenu ul.mainmenu {
+	margin: 0;
+	border: 0 none;
+	padding: 0;
+	width: auto; /*For KHTML*/
+	list-style: none;
+	height: 24px;
+}
+
+#dropMenu ul.mainmenu li {
+  margin: 0;
+  border: 0 none;
+  padding: 0;
+  float: left; /*For Gecko*/
+  display: inline;
+  list-style: none;
+  position: relative;
+  height: 24px;
+}
+
+/* SUBMENUS */
+
+#dropMenu ul.mainmenu ul {
+  margin: 0;
+  border: 0 none;
+  padding: 0;
+  /*width: 160px;*/
+  width: auto;
+  list-style: none;
+  display: none;
+  position: absolute;
+  top: 24px;
+  left: 0;
+}
+
+#dropMenu ul.mainmenu ul:after /*From IE 7 lack of compliance*/{
+  clear: both;
+  display: block;
+  font: 1px/0px serif;
+  content: ".";
+  height: 0;
+  visibility: hidden;
+}
+
+#dropMenu ul.mainmenu ul li {
+	width: 160px;
+	float: left; /*For IE 7 lack of compliance*/
+	display: block !important;
+	display: inline;
+}
+
+/* Root Menu */
+#dropMenu ul.mainmenu a {
+  border: 1px solid #FFF;
+  border-right-color: #CCC;
+  border-bottom-color: #CCC;
+  padding: 0 10px;
+  float: none !important; /*For Opera*/
+  float: left; /*For IE*/
+  display: block;
+  background: #EEE;
+  color: #666;
+  font: bold 10px/22px Verdana, Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  height: auto !important;
+  height: 1%; /*For IE*/
+}
+
+/* Root Menu Hover Persistence */
+#dropMenu ul.mainmenu a:hover {
+  background: #CCC;
+  color: #FFF;
+}
+
+/* 2nd Menu */
+#dropMenu ul.mainmenu li:hover li a,
+#dropMenu ul.mainmenu li.iehover li a {
+  float: none;
+}
+
+#dropMenu ul.mainmenu ul ul {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 160px;
+}
+
+/* Do Not Move - Must Come Before display:block for Gecko */
+#dropMenu ul.mainmenu li:hover ul ul,
+#dropMenu ul.mainmenu li.iehover ul ul {
+  display: none;
+}
+
+#dropMenu ul.mainmenu li:hover ul,
+#dropMenu ul.mainmenu ul li:hover ul {
+  display: block;
+}
+
+#dropMenu ul.mainmenu li.iehover ul,
+#dropMenu ul.mainmenu ul li.iehover ul {
+  display: block;
+}
+
+#dropMenu li.persistHover,
+#dropMenu a.persistHover
+{
+	background: #CCC;
+	color: #FFF;
+}
+
+
+#dropMenu span.counter {
+	width: 13px;
+
+	text-align: center;
+	line-height: 10px;
+	padding-left: 3px;
+	background: #4e94ca;
+	color: white;
+	font-size: 12px;
+	position: absolute;
+	right: 1px;
+	top: 1px;
+	bottom: 1px;
+}
+
+

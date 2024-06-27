@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" version="-//W3C//DTD XHTML 1.1//EN" xml:lang="en">
+
+<head>
+
+<title>mooTree 2</title>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+
+<link rel="stylesheet" href="mootree.css" type="text/css" media="screen" />
+<script type="text/javascript" src="mootools/mootools-1.2-core.js"></script>
+<script type="text/javascript" src="mootree.js"></script>
+
+<script type="text/javascript">
+
+var tree;
+
+window.onload = function() {
+	
+	tree = new MooTreeControl({
+		div: 'mytree',
+		mode: 'files',
+		grid: true,
+		onSelect: function(node, state) {
+			if (state && node.data.alert) window.alert(node.data.alert);
+		}
+	},{
+		text: 'Root Node',
+		open: true
+	});
+	
+}
+
+</script>
+
+</head>
+
+<body>
+
+<h2>mooTree 2</h2>
+<h4>example 5: XML loading</h4>
+
+<p>
+	<b>Este ejemplo, requiere un servidor web real - no va a trabajar con los archivos locales.</b>
+</p>
+
+<p>
+Esta página demuestra la carga dinámica de XML. Haga clic en la "carga xml 'situado en la parte inferior de la página para cargar" example.xml' actualmente en el marco del nodo seleccionado. Tenga en cuenta que al cargar un documento XML en un nodo se borra el contenido actual de ese nodo. </p>
+
+<p>
+Por favor, examine el archivo XML. Los atributos' texto ',' Icono ',' openicon ',' color 'y' abierto 'se utilizan para la MooTreeNode constructor para cada uno de los nodos - cualquier otra atributos adicionales (como "alerta" en uno de los nodos en este ejemplo) se añaden a la del nodo "datos" objeto, incluido el atributo especial "carga". La "carga" atributo (opcional) especifica un archivo XML para cargar cuando el nodo se amplía..
+</p>
+
+<div id="mytree">
+</div>
+
+<p>
+	<input type="button" value=" expand all " onclick="tree.expand()" />
+	<input type="button" value=" collapse all " onclick="tree.collapse()" />
+</p>
+
+<p>
+	<input type="button" value=" load xml " onclick="(tree.selected||tree.root).load('example.xml')" />
+</p>
+
+</body>
+
+</html>

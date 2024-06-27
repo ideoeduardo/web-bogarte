@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>NonverBlaster - Documentation</title>
+	<style type="text/css" media="screen">
+		body {
+			font-family: Georgia, Times, serif;
+			margin: 20px;
+			font-size: 12px;
+		}
+		h1 {
+			font-size: 30px;
+			letter-spacing: -1px;
+		}
+		h2 {
+			font-size: 18px;
+		}
+		h3 {
+			font-size: 12px;
+		}
+		code{
+			padding: 5px;
+			display: block;
+			border: 1px solid;
+		}
+		.crossed {
+			text-decoration: line-through;
+		}
+	</style>
+</head>
+
+<body>
+	
+	<h2>Documentation</h2>
+
+	<h1>NonverBlaster:<em>hover</em></h1>
+	
+	<p>
+		Copyright 2008 by Rasso Hilber - <a href="http://blog.nonverbla.de/blog">http://blog.nonverbla.de/blog</a>
+	</p>
+	<p>
+		<img src="NonverBlaster.jpg" alt="NonverBlaster" />
+	</p>
+
+	<p>
+		This VideoPlayer is optimized for easy implementation and personalization. It is possible to change:
+	</p>
+	<ul>
+		<li>the source of the video file</li>
+		<li>a teaser-image</li>
+		<li>the autoplay to true / false</li>
+		<li>the buffer time (in seconds)</li>
+		<li>the smoothing to true / false</li>
+		<li>if the timeCode should be displayed or not</li>
+		<li>if the video should loop automatically</li>
+		<li>the color for all controls</li>
+		<li>if the video should scale in fullScreen mode</li>
+		<li>if the scaling button should show up in fullScreen mode</li>
+	</ul>
+	<p>
+		without opening Flash. These properties are pasted into the SWF using FlashVars (See the source code of the »<a href="example.html">example.html</a>«).
+	</p>
+	<p>
+		The following snippet is used to do this:
+	</p>
+	
+	<h3>text/javascript:</h3>
+	<p>
+		<code>
+			// Size and SWF<br />
+			var player = new SWFObject("NonverBlaster.swf", "video", "740", "675", "9", "#000");<br />
+			player.addParam("scale", "noscale");<br />
+			//<br />
+			// Important to use the FullScreen function<br />
+			player.addParam("allowFullScreen", "true");<br />
+			//<br />
+			// source (FLV or h.264 MOV)<br />
+			player.addVariable("videoURL", "http://yourdomain.com/yourmovie.flv");<br />
+			//<br />
+			// teaser image (best if same resolution as the video)<br />
+			player.addVariable("teaserURL", "http://yourdomain.com/yourimage.jpg");<br />
+			//<br />
+			// other adjustable variables
+			player.addVariable("allowSmoothing", "true");<br />
+			player.addVariable("autoPlay", "false");<br />
+			player.addVariable("buffer", "6");<br />
+			player.addVariable("showTimecode", "true");<br />
+			player.addVariable("loop", "true");<br />
+			player.addVariable("controlColour", "0xff8ec6");<br />
+			player.addVariable("scaleIfFullScreen", "true");<br />
+			player.addVariable("showScalingButton", "true");<br />
+			
+			player.write("videoPlayer");<br />
+		</code>
+	</p>
+	<p>
+		To get the NonverBlaster running on your server, you will need:
+	</p>
+	<ul>
+		<li>the »NonverBlaster.swf«</li>
+		<li>a HTML-file to embed the SWF (see <a href="example.html">example.html</a>)</li>
+		<li>the »swfobject.js«</li>
+		<li>your video file</li>
+		<li>optional: a preview image</li>
+	</ul>
+	<p>
+		If you want to edit the source of the SWF-File <span class="crossed">it would be good to know some german, since all commenting is done in this language which I know best ;) I will try to translate it sooner rather than later, promised!</span> I recently translated all commenting to english. Now the german coders have a problem ;)
+	</p>
+	<p>
+	Have some fun and give me some props!<br /> <strong>// Nonverbla</strong>
+	</p>
+</body>
+</html>

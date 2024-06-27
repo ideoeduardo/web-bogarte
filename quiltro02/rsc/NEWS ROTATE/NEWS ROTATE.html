@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Rotater Demo</title>
+		
+    <script language="javascript" type="text/javascript" src="mootools-1.2-core.js"></script>
+	<script language="javascript" type="text/javascript" src="mootools-1.2-more.js"></script>
+
+        
+	<style type="text/css" media="screen">
+	#rotater-demo {background-color:#eee; position:relative; height:120px; width:205px; margin-bottom:10px; }
+	.slide_noticia { background-color:#efa; border:2px solid #bbb; height:60px; position:absolute; width:200px; }
+	.slide_noticia p { padding:5px; }
+	</style>
+        
+	<script type="text/javascript">
+		window.addEvent('domready',function(){
+			var rotater = new Rotater('.slide_noticia',{ 		//Class of elements that should rotate.
+				slideInterval:3000, 					//Length of showing each element, in milliseconds
+				transitionDuration:1000 				//Length crossfading transition, in milliseconds
+			});
+		});	
+		
+		
+var Rotater=new Class({Implements:[Options,Events],options:{slideInterval:4000,transitionDuration:1000,startIndex:0,autoplay:true},initialize:function(B,A){this.setOptions(A);this.slides=$$(B);this.createFx();this.showSlide(this.options.startIndex);if(this.slides.length<2){this.options.autoplay=false}if(this.options.autoplay){this.autoplay()}return this},toElement:function(){return this.container},createFx:function(){if(!this.slideFx){this.slideFx=new Fx.Elements(this.slides,{duration:this.options.transitionDuration})}this.slides.each(function(A){A.setStyle("opacity",0)})},showSlide:function(B){var A={};this.slides.each(function(C,D){if(D==B&&D!=this.currentSlide){A[D.toString()]={opacity:1}}else{A[D.toString()]={opacity:0}}},this);this.fireEvent("onShowSlide",B);this.currentSlide=B;this.slideFx.start(A);return this},autoplay:function(){this.slideshowInt=this.rotate.periodical(this.options.slideInterval,this);this.fireEvent("onAutoPlay");return this},stop:function(){$clear(this.slideshowInt);this.fireEvent("onStop");return this},rotate:function(){current=this.currentSlide;next=(current+1>=this.slides.length)?0:current+1;this.showSlide(next);this.fireEvent("onRotate",next);return this}});
+		</script>
+        
+        
+        
+</head>
+	<body>
+    
+    
+    
+    
+		<div id="rotater-demo">
+			<div class="slide_noticia" style="border-color:#f55;">
+				<p>Este es <strong>slide 1</strong>.</p>
+			</div>
+			<div class="slide_noticia" style="border-color:#5f5;">
+				<p>Este es <strong>slide 2</strong>.</p>
+			</div>
+			
+			<div class="slide_noticia" style="border-color:#55f;">
+				<p>Este es <strong>slide 3</strong>.</p>			
+			</div>
+			<div class="slide_noticia" style="border-color:#f55;">
+				<p>Este es <strong>slide 4</strong>.</p>			
+			</div>
+		</div>
+        
+        
+        
+        
+        
+        
+	</body>
+</html>

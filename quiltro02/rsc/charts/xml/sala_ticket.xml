@@ -1,0 +1,117 @@
+<chart>
+
+	<axis_category  size='10' color='000000' alpha='50' orientation='vertical_up' />
+	
+	<axis_ticks value_ticks='true' category_ticks='true' minor_count='1' major_thickness='2' major_color='000000' />
+	
+	<axis_value size='9' color='000000' alpha='40'
+            max='1400' 
+            steps='7'  
+            prefix='' 
+            suffix=' Bs.' 
+            decimals='0'
+            decimal_char='.'  
+            separator='' 
+            show_min='true' />
+
+	<chart_border top_thickness='0' bottom_thickness='2' left_thickness='2' right_thickness='0' />
+	<chart_data>
+		<row>
+			<null/>
+			<string>1988</string>
+			<string>1989</string>
+			<string>1990</string>
+			<string>1991</string>
+			<string>1992</string>
+			<string>1993</string>
+			<string>1994</string>
+			<string>1995</string>
+			<string>1996</string>
+			<string>1997</string>
+			<string>1998</string>
+			<string>1999</string>
+			<string>2000</string>
+			<string>2001</string>
+			<string>2002</string>
+			<string>2003</string>
+			<string>2004</string>
+			<string>2005</string>
+			<string>2006</string>
+			<string>2007</string>
+			<string>Abril 2008</string>
+			<string>Mayo 2008</string>
+		</row>
+		<row>
+			<string>Salario Minimo</string>
+			<number tooltip='02'>2</number>
+			<number tooltip='02'>2</number>
+			<number tooltip='02'>2</number>
+			<number tooltip='06'>6</number>
+			<number tooltip='09'>9</number>
+			<number tooltip='09'>9</number>
+			<number tooltip='15'>15</number>
+			<number tooltip='15'>15</number>
+			<number tooltip='15'>15</number>
+			<number tooltip='75'>75</number>
+			<number tooltip='100'>100</number>
+			<number tooltip='120'>120</number>
+			<number tooltip='144'>144</number>
+			<number tooltip='158'>158</number>
+			<number tooltip='190'>190</number>
+			<number tooltip='247'>247</number>
+			<number tooltip='321'>321</number>
+			<number tooltip='405'>405</number>
+			<number tooltip='466'>466</number>
+			<number tooltip='615'>615</number>
+			<number tooltip='615'>615</number>
+			<number tooltip='799'>799</number>
+		</row>
+		<row>
+			<string>Promedio minimo por Ticket alimentacion</string>
+			<number tooltip='0'>0</number>
+			<number tooltip='0'>0</number>
+			<number tooltip='0'>0</number>
+			<number tooltip='0'>0</number>
+			<number tooltip='0'>0</number>
+			<number tooltip='0'>0</number>
+			<number tooltip='0'>0</number>
+			<number tooltip='0'>0</number>
+			<number tooltip='0'>0</number>
+			<number tooltip='0'>0</number>
+			<number tooltip='0'>0</number>
+			<number tooltip='76'note='196' note_x='-25' note_y='4'>76</number>
+			<number tooltip='94'note='238' note_x='-75' note_y='4'>94</number>
+			<number tooltip='112'note='270' note_x='-35' note_y='-4'>112</number>
+			<number tooltip='127'note='317' note_x='-25' note_y='-4'>127</number>
+			<number tooltip='165'note='412' note_x='-20' note_y='-4'>165</number>
+			<number tooltip='211'note='532' note_x='-20' note_y='-4'>211</number>
+			<number tooltip='255'note='660' note_x='-20' note_y='-4'>255</number>
+			<number tooltip='292'note='757' note_x='-25' note_y='-4'>292</number>
+			<number tooltip='327'note='941' note_x='-20' note_y='0'>327</number>
+			<number tooltip='399'note='1.014' note_x='-22' note_y='-4'>399</number>
+			<number tooltip='399' note='Ingreso Minimo con impacto de incremento salarial   1.198' note_x='-140' note_y='-15'>399</number>
+		</row>
+
+	</chart_data>
+	<chart_grid_h thickness='1' alpha='3' type='solid' />
+	<chart_grid_v thickness='1' alpha='3' type='solid' />
+	<chart_rect x='50' y='80' width='430' height='350' positive_color='888888' positive_alpha='10' />
+	<chart_note type='flag' size='9' color='000000' alpha='70' background_color='aaff00' background_alpha='75' shadow='medium' bevel='note' />
+	<chart_type>stacked column</chart_type>
+
+	<draw>
+<text shadow='low' color='0' alpha='25' size='16' x='0' y='0' width='500' height='80' v_align='middle' h_align='center'>Ingreso minimo legal\r(Salario minimo + Ticket Alimentacion)\r1998-2008</text>
+	</draw>
+
+<legend shadow='high' x='50' y='474' width='200' height='20' margin='7' fill_color='000000' fill_alpha='3' line_color='000000' line_alpha='0' line_thickness='0' layout='horizontal' size='10' color='000000' alpha='40' />
+<tooltip color='ffffcc' alpha='80' size='9' background_color='444488' background_alpha='80' shadow='low' />
+<chart_border top_thickness='0'bottom_thickness='2'left_thickness='2'right_thickness='0'color='000000'/> 
+<chart_transition type='drop'delay='1'duration='2'order='series'/>
+   
+	<series_color>
+		<color>8844ff</color>
+		<color>ff5500</color>
+	</series_color>
+	<series bar_gap='0' set_gap='27' />
+
+</chart>
